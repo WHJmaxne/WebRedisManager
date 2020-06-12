@@ -28,6 +28,7 @@ namespace SAEA.WebRedisManager.Controllers
 {
     public class VerificationController : Controller
     {
+        private static string _code = string.Empty;
         /// <summary>
         /// 获取验证码
         /// </summary>
@@ -44,7 +45,7 @@ namespace SAEA.WebRedisManager.Controllers
                     VerificationCode va = new VerificationCode(105, 30, 4, id);
                     var s = va.Create(m);
                     string code = va.IdentifyingCode;
-                    HttpContext.Current.Session["code"] = code;
+                    _code = code;
                     HttpContext.Current.Response.BinaryWrite(m.ToArray());
                     return new EmptyResult();
                 }
@@ -68,14 +69,12 @@ namespace SAEA.WebRedisManager.Controllers
                 {
                     code = code.ToLower();
 
-                    var rcode = HttpContext.Current.Session["code"];
-
-                    if (rcode != null && rcode.ToString().ToLower() == code)
+                    if (_code != null && _code.ToString().ToLower() == code)
                     {
                         return Json(new JsonResult<bool>() { Code = 1, Data = true });
                     }
                 }
-               
+
                 return Json(new JsonResult<bool>() { Code = 1, Data = false, Message = "验证码不正确！" });
             }
             catch (Exception ex)

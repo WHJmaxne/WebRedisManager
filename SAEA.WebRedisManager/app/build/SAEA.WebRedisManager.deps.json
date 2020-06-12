@@ -1,0 +1,397 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "SAEA.WebRedisManager/1.0.0": {
+        "dependencies": {
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.10.9",
+          "Microsoft.VisualStudio.Azure.Kubernetes.Tools.Targets": "1.1.0",
+          "SAEA.MVC": "5.3.2.5",
+          "SAEA.RedisSocket": "5.3.2.5",
+          "SAEA.WebSocket": "5.3.2.5",
+          "System.Drawing.Common": "4.7.0"
+        },
+        "runtime": {
+          "SAEA.WebRedisManager.dll": {}
+        }
+      },
+      "Microsoft.NETCore.Platforms/3.1.0": {},
+      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.10.9": {},
+      "Microsoft.VisualStudio.Azure.Kubernetes.Tools.Targets/1.1.0": {
+        "dependencies": {
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.10.9"
+        }
+      },
+      "Microsoft.Win32.SystemEvents/4.7.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "3.1.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {
+            "assemblyVersion": "4.0.2.0",
+            "fileVersion": "4.700.19.56404"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.2.0",
+            "fileVersion": "4.700.19.56404"
+          }
+        }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.3.23909"
+          }
+        }
+      },
+      "Pipelines.Sockets.Unofficial/2.1.0": {
+        "dependencies": {
+          "System.Buffers": "4.5.0",
+          "System.IO.Pipelines": "4.6.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.6.0"
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/Pipelines.Sockets.Unofficial.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "2.1.0.64623"
+          }
+        }
+      },
+      "protobuf-net/2.4.6": {
+        "dependencies": {
+          "System.ServiceModel.Primitives": "4.5.3"
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/protobuf-net.dll": {
+            "assemblyVersion": "2.4.0.0",
+            "fileVersion": "2.4.6.0"
+          }
+        }
+      },
+      "SAEA.Common/5.3.2.5": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
+          "System.Memory": "4.5.4",
+          "protobuf-net": "2.4.6"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SAEA.Common.dll": {
+            "assemblyVersion": "5.3.2.5",
+            "fileVersion": "5.3.2.5"
+          }
+        }
+      },
+      "SAEA.Http/5.3.2.5": {
+        "dependencies": {
+          "SAEA.Common": "5.3.2.5",
+          "SAEA.Sockets": "5.3.2.5"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SAEA.Http.dll": {
+            "assemblyVersion": "5.3.2.5",
+            "fileVersion": "5.3.2.5"
+          }
+        }
+      },
+      "SAEA.MVC/5.3.2.5": {
+        "dependencies": {
+          "SAEA.Common": "5.3.2.5",
+          "SAEA.Http": "5.3.2.5",
+          "SAEA.Sockets": "5.3.2.5"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SAEA.MVC.dll": {
+            "assemblyVersion": "5.3.2.5",
+            "fileVersion": "5.3.2.5"
+          }
+        }
+      },
+      "SAEA.RedisSocket/5.3.2.5": {
+        "dependencies": {
+          "SAEA.Common": "5.3.2.5",
+          "SAEA.Sockets": "5.3.2.5"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SAEA.RedisSocket.dll": {
+            "assemblyVersion": "5.3.2.5",
+            "fileVersion": "5.3.2.5"
+          }
+        }
+      },
+      "SAEA.Sockets/5.3.2.5": {
+        "dependencies": {
+          "Pipelines.Sockets.Unofficial": "2.1.0",
+          "SAEA.Common": "5.3.2.5",
+          "System.IO.Pipelines": "4.6.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SAEA.Sockets.dll": {
+            "assemblyVersion": "5.3.2.5",
+            "fileVersion": "5.3.2.5"
+          }
+        }
+      },
+      "SAEA.WebSocket/5.3.2.5": {
+        "dependencies": {
+          "SAEA.Common": "5.3.2.5",
+          "SAEA.Sockets": "5.3.2.5"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SAEA.WebSocket.dll": {
+            "assemblyVersion": "5.3.2.5",
+            "fileVersion": "5.3.2.5"
+          }
+        }
+      },
+      "System.Buffers/4.5.0": {},
+      "System.Drawing.Common/4.7.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.Win32.SystemEvents": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "4.0.0.1",
+            "fileVersion": "4.6.26919.2"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "rid": "unix",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.2.0",
+            "fileVersion": "4.700.19.56404"
+          },
+          "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.2.0",
+            "fileVersion": "4.700.19.56404"
+          }
+        }
+      },
+      "System.IO.Pipelines/4.6.0": {
+        "runtime": {
+          "lib/netcoreapp3.0/System.IO.Pipelines.dll": {
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.700.19.46214"
+          }
+        }
+      },
+      "System.Memory/4.5.4": {},
+      "System.Private.ServiceModel/4.5.3": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "3.1.0",
+          "System.Reflection.DispatchProxy": "4.5.0",
+          "System.Security.Principal.Windows": "4.5.0"
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netstandard2.0/System.Private.ServiceModel.dll": {
+            "rid": "unix",
+            "assetType": "runtime",
+            "assemblyVersion": "4.5.0.3",
+            "fileVersion": "4.6.26720.1"
+          },
+          "runtimes/win/lib/netstandard2.0/System.Private.ServiceModel.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.5.0.3",
+            "fileVersion": "4.6.26720.1"
+          }
+        }
+      },
+      "System.Reflection.DispatchProxy/4.5.0": {},
+      "System.Runtime.CompilerServices.Unsafe/4.6.0": {},
+      "System.Security.Principal.Windows/4.5.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "3.1.0"
+        }
+      },
+      "System.ServiceModel.Primitives/4.5.3": {
+        "dependencies": {
+          "System.Private.ServiceModel": "4.5.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.ServiceModel.Primitives.dll": {
+            "assemblyVersion": "4.5.0.3",
+            "fileVersion": "4.6.26720.1"
+          },
+          "lib/netstandard2.0/System.ServiceModel.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.26720.1"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SAEA.WebRedisManager/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.NETCore.Platforms/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-z7aeg8oHln2CuNulfhiLYxCVMPEwBl3rzicjvIX+4sUuCwvXw5oXQEtbiU2c0z4qYL5L3Kmx0mMA/+t/SbY67w==",
+      "path": "microsoft.netcore.platforms/3.1.0",
+      "hashPath": "microsoft.netcore.platforms.3.1.0.nupkg.sha512"
+    },
+    "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.10.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Sug+YeP9YYigFnUdvPCUJjBz7cc2VVR7UBZkIRwPWmVR/HmIM5HbcpX940s4BM3xgL3QHGp3qN7AqkcZ/MjZEw==",
+      "path": "microsoft.visualstudio.azure.containers.tools.targets/1.10.9",
+      "hashPath": "microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512"
+    },
+    "Microsoft.VisualStudio.Azure.Kubernetes.Tools.Targets/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-e8UX59gP87Atju23R93cdqPwk8CW2zdmxOkfTtycjO7cxRmlF2D3OHOZMJDrccpsCwPrj9vTJPTBrqQMR97gRg==",
+      "path": "microsoft.visualstudio.azure.kubernetes.tools.targets/1.1.0",
+      "hashPath": "microsoft.visualstudio.azure.kubernetes.tools.targets.1.1.0.nupkg.sha512"
+    },
+    "Microsoft.Win32.SystemEvents/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mtVirZr++rq+XCDITMUdnETD59XoeMxSpLRIII7JRI6Yj0LEDiO1pPn0ktlnIj12Ix8bfvQqQDMMIF9wC98oCA==",
+      "path": "microsoft.win32.systemevents/4.7.0",
+      "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "path": "newtonsoft.json/12.0.3",
+      "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
+    },
+    "Pipelines.Sockets.Unofficial/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XzzguceYuL4u63YZUnJbPUdp4iNisRgAf/0Vg8Nl4r/H+F5DL1pWMKFuVw3kheHIl7sZhn3FNVY4q+54fiKP1g==",
+      "path": "pipelines.sockets.unofficial/2.1.0",
+      "hashPath": "pipelines.sockets.unofficial.2.1.0.nupkg.sha512"
+    },
+    "protobuf-net/2.4.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fDYwwGw9yCERTkIzxhmiGmD3i5nB5Pw4roZ9Pi+MPNbNiNbGAA9mVrSSbTjAMNQEBXtwK/HZ6btrO2YwYsVsMw==",
+      "path": "protobuf-net/2.4.6",
+      "hashPath": "protobuf-net.2.4.6.nupkg.sha512"
+    },
+    "SAEA.Common/5.3.2.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-J+N7Qsvffxuqt2zE4hQ6g7k+r+L2QFzQtAnfhUhPfklxNISfOl9OnSu+PzhNcLNzwcxHb0dW9d1Lbos0gmpuxg==",
+      "path": "saea.common/5.3.2.5",
+      "hashPath": "saea.common.5.3.2.5.nupkg.sha512"
+    },
+    "SAEA.Http/5.3.2.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gRxSZtVP8prrTe1PXWvjVGLjfpon8sK8yI9zBNpKgtnBUOHYX23QY59LQKbEnbXvVYjzZCM3AjvrUVUGdAJNsg==",
+      "path": "saea.http/5.3.2.5",
+      "hashPath": "saea.http.5.3.2.5.nupkg.sha512"
+    },
+    "SAEA.MVC/5.3.2.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2rZSx6ZcdofxUj8lJp7tqEhNQKFD/CFoA7LHrb7PYPlJOYKeUCFcSEFz//OLfGfcjoi+5+o+jMoGbVq/Jieg2Q==",
+      "path": "saea.mvc/5.3.2.5",
+      "hashPath": "saea.mvc.5.3.2.5.nupkg.sha512"
+    },
+    "SAEA.RedisSocket/5.3.2.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-h7/FrngI6PJWy27PXVNc77q8bozqLFEfwDvfP7R7R0N3VLIf6JHF9XgHGvMgRAPHgYnFferbX49OkZtPKlsjKw==",
+      "path": "saea.redissocket/5.3.2.5",
+      "hashPath": "saea.redissocket.5.3.2.5.nupkg.sha512"
+    },
+    "SAEA.Sockets/5.3.2.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gZ54APmO63s1jjjxZtWfHL8EQt2DlDw/TDT9VQVE9rAFtFQg6YLiJ2FPffd0S8Tfr45Txs66CsiMFjpwTCurMQ==",
+      "path": "saea.sockets/5.3.2.5",
+      "hashPath": "saea.sockets.5.3.2.5.nupkg.sha512"
+    },
+    "SAEA.WebSocket/5.3.2.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WYxNfEb8P6izawTMC4P1i6DbYm9nxW6VgB2f61XoEUHgh82z41V7fg9oYOVitznuyio5mTprjBVy0MaQ1hl8iw==",
+      "path": "saea.websocket/5.3.2.5",
+      "hashPath": "saea.websocket.5.3.2.5.nupkg.sha512"
+    },
+    "System.Buffers/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pL2ChpaRRWI/p4LXyy4RgeWlYF2sgfj/pnVMvBqwNFr5cXg7CXNnWZWxrOONLg8VGdFB8oB+EG2Qw4MLgTOe+A==",
+      "path": "system.buffers/4.5.0",
+      "hashPath": "system.buffers.4.5.0.nupkg.sha512"
+    },
+    "System.Drawing.Common/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-v+XbyYHaZjDfn0ENmJEV1VYLgGgCTx1gnfOBcppowbpOAriglYgGCvFCPr2EEZyBvXlpxbEsTwkOlInl107ahA==",
+      "path": "system.drawing.common/4.7.0",
+      "hashPath": "system.drawing.common.4.7.0.nupkg.sha512"
+    },
+    "System.IO.Pipelines/4.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xOqFH7Uiemd/QzUl2Di23cZCrc2CmgijeTDyFKDT8+jjpH+ynf7WoLUExY2AYGyGBjGL5Kn6DZScnqeg91zQOQ==",
+      "path": "system.io.pipelines/4.6.0",
+      "hashPath": "system.io.pipelines.4.6.0.nupkg.sha512"
+    },
+    "System.Memory/4.5.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
+      "path": "system.memory/4.5.4",
+      "hashPath": "system.memory.4.5.4.nupkg.sha512"
+    },
+    "System.Private.ServiceModel/4.5.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ancrQgJagx+yC4SZbuE+eShiEAUIF0E1d21TRSoy1C/rTwafAVcBr/fKibkq5TQzyy9uNil2tx2/iaUxsy0S9g==",
+      "path": "system.private.servicemodel/4.5.3",
+      "hashPath": "system.private.servicemodel.4.5.3.nupkg.sha512"
+    },
+    "System.Reflection.DispatchProxy/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+UW1hq11TNSeb+16rIk8hRQ02o339NFyzMc4ma/FqmxBzM30l1c2IherBB4ld1MNcenS48fz8tbt50OW4rVULA==",
+      "path": "system.reflection.dispatchproxy/4.5.0",
+      "hashPath": "system.reflection.dispatchproxy.4.5.0.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/4.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HxozeSlipUK7dAroTYwIcGwKDeOVpQnJlpVaOkBz7CM4TsE5b/tKlQBZecTjh6FzcSbxndYaxxpsBMz+wMJeyw==",
+      "path": "system.runtime.compilerservices.unsafe/4.6.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512"
+    },
+    "System.Security.Principal.Windows/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-U77HfRXlZlOeIXd//Yoj6Jnk8AXlbeisf1oq1os+hxOGVnuG+lGSfGqTwTZBoORFF6j/0q7HXIl8cqwQ9aUGqQ==",
+      "path": "system.security.principal.windows/4.5.0",
+      "hashPath": "system.security.principal.windows.4.5.0.nupkg.sha512"
+    },
+    "System.ServiceModel.Primitives/4.5.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Wc9Hgg4Cmqi416zvEgq2sW1YYCGuhwWzspDclJWlFZqY6EGhFUPZU+kVpl5z9kAgrSOQP7/Uiik+PtSQtmq+5A==",
+      "path": "system.servicemodel.primitives/4.5.3",
+      "hashPath": "system.servicemodel.primitives.4.5.3.nupkg.sha512"
+    }
+  }
+}

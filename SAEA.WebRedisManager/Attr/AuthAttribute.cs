@@ -20,6 +20,7 @@ using SAEA.MVC;
 using SAEA.Redis.WebManager.Models;
 using SAEA.WebRedisManager.Libs;
 using SAEA.WebRedisManager.Models;
+using System;
 using System.Diagnostics;
 using System.Text;
 
@@ -49,7 +50,7 @@ namespace SAEA.WebRedisManager.Attr
         {
             _stopwatch = Stopwatch.StartNew();
 
-            if (!HttpContext.Current.Session.Keys.Contains("uid"))
+            if (!UserHelper.TryGetUserSession("uid", out UserSession u))
             {
                 HttpContext.Current.Response.SetCached(new JsonResult(new JsonResult<string>() { Code = 3, Message = "当前操作需要登录！" }));
 
@@ -57,9 +58,23 @@ namespace SAEA.WebRedisManager.Attr
 
                 return false;
             }
+
             if (_isAdmin)
             {
-                var user = UserHelper.Get(HttpContext.Current.Session["uid"].ToString());
+                var span = DateTime.UtcNow - u.dt;
+                if (span.TotalMinutes > 30)
+                {
+                    HttpContext.Current.Response.SetCached(new JsonResult(new JsonResult<string>() { Code = 3, Message = "当前操作需要登录！" }));
+
+                    HttpContext.Current.Response.End();
+
+                    return false;
+                }
+
+                u.dt = DateTime.UtcNow;
+                UserHelper.AddOrUpdateUserSession("uid", u);
+
+                var user = UserHelper.Get(u.Id);
 
                 if (user.Role != Role.Admin)
                 {

@@ -4,6 +4,7 @@ using SAEA.WebRedisManager.Libs;
 using SAEA.WebSocket;
 using SAEA.WebSocket.Type;
 using System;
+using System.Threading;
 
 namespace SAEA.WebRedisManager
 {
@@ -15,7 +16,7 @@ namespace SAEA.WebRedisManager
 
             var config = SAEAMvcApplicationConfigBuilder.Read();
 
-            config.Port = 16379;
+            config.Port = 80;
 
             config.Count = 100;
 
@@ -31,11 +32,15 @@ namespace SAEA.WebRedisManager
 
             ConsoleHelper.WriteLine("WebRedisManager Already started");
 
-            ConsoleHelper.WriteLine("Please open on Browser：http://127.0.0.1:16379/");
+            ConsoleHelper.WriteLine("Please open on Browser：http://127.0.0.1:80/");
 
             ConsoleHelper.WriteLine("Enter to exit service...");
 
-            ConsoleHelper.ReadLine();
+            while (true)
+            {
+                Thread.Sleep(50);
+            }
+            //ConsoleHelper.ReadLine();
         }
     }
 }

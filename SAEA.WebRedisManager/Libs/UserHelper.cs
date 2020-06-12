@@ -31,7 +31,49 @@ namespace SAEA.WebRedisManager.Libs
     static class UserHelper
     {
         static List<User> _list = new List<User>();
+        static Dictionary<string, UserSession> userSession = new Dictionary<string, UserSession>();
 
+        public static bool AddOrUpdateUserSession(string key, UserSession user)
+        {
+            if (userSession.ContainsKey(key))
+            {
+                userSession[key] = user;
+            }
+            else
+            {
+                userSession.Add(key, user);
+            }
+            return true;
+        }
+
+        public static bool TryGetUserSession(string key, out UserSession user)
+        {
+            user = null;
+            if (userSession.ContainsKey(key))
+            {
+                user = userSession[key];
+                return true;
+            }
+            return false;
+        }
+
+        public static UserSession GetUserSession(string key)
+        {
+            if (userSession.ContainsKey(key))
+            {
+                return userSession[key];
+            }
+            return null;
+        }
+
+        public static bool RemoveUserSession(string key)
+        {
+            if (userSession.ContainsKey(key))
+            {
+                userSession.Remove(key);
+            }
+            return true;
+        }
 
         public static string GetCurrentPath(string children)
         {
@@ -173,5 +215,10 @@ namespace SAEA.WebRedisManager.Libs
 
             Save();
         }
+    }
+    public class UserSession
+    {
+        public string Id { get; set; }
+        public DateTime dt { get; set; }
     }
 }

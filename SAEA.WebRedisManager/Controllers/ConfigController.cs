@@ -26,7 +26,7 @@ namespace SAEA.WebRedisManager.Controllers
         {
             try
             {
-                config.Creator = HttpContext.Current.Session["uid"].ToString();
+                config.Creator = UserHelper.GetUserSession("uid").Id;
 
                 ConfigHelper.Set(config);
 
@@ -51,7 +51,7 @@ namespace SAEA.WebRedisManager.Controllers
 
                 var confs = Deserialize<List<Config>>(configs);
 
-                var user = UserHelper.Get(HttpContext.Current.Session["uid"].ToString());
+                var user = UserHelper.Get(UserHelper.GetUserSession("uid").Id);
 
                 if (user.Role == Role.User)
                 {
@@ -94,7 +94,7 @@ namespace SAEA.WebRedisManager.Controllers
         {
             try
             {
-                var user = UserHelper.Get(HttpContext.Current.Session["uid"].ToString());
+                var user = UserHelper.Get(UserHelper.GetUserSession("uid").Id);
 
                 if (user != null)
                 {
@@ -147,7 +147,7 @@ namespace SAEA.WebRedisManager.Controllers
             {
                 if (string.IsNullOrEmpty(name)) return Json(new JsonResult<string>() { Code = 2, Message = "传入的配置项名称不能为空！" });
 
-                var user = UserHelper.Get(HttpContext.Current.Session["uid"].ToString());
+                var user = UserHelper.Get(UserHelper.GetUserSession("uid").Id);
 
                 if (user.Role == Role.Admin)
                 {

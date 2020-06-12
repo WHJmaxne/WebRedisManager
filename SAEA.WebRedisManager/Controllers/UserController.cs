@@ -40,6 +40,28 @@ namespace SAEA.WebRedisManager.Controllers
         /// <returns></returns>
         public ActionResult Login(string userName, string password)
         {
+            int[] arr = new int[] { 1, 2, 3, 4, 5, 5, 6 };
+            Dictionary<int, int> d = new Dictionary<int, int>();
+            int count = 0;
+            int num = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (d.ContainsKey(arr[i]))
+                {
+                    d[arr[i]] = d[arr[i]] + 1;
+                }
+                else
+                {
+                    d.Add(arr[i], 1);
+                }
+
+                if (d[arr[i]] > count)
+                {
+                    count = d[arr[i]];
+                    num = arr[i];
+                }
+            }
+            Console.WriteLine(num);
             try
             {
                 if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password)) return Json(new JsonResult<string>() { Code = 2, Message = "用户名或密码不能为空" });
@@ -48,20 +70,21 @@ namespace SAEA.WebRedisManager.Controllers
 
                 if (user == null)
                 {
-                    if (userName == "yswenli" && !UserHelper.Exists("yswenli"))
+                    if (userName == "whj" && !UserHelper.Exists("whj"))
                     {
                         var newUser = new User()
                         {
                             ID = Guid.NewGuid().ToString("N"),
                             UserName = userName.Length > 20 ? userName.Substring(0, 20) : userName,
                             Password = password.Length > 20 ? password.Substring(0, 20) : password,
-                            NickName = "WALLE",
+                            NickName = "MAXNE",
                             Role = Role.Admin
                         };
 
                         UserHelper.Set(newUser);
 
-                        HttpContext.Current.Session["uid"] = newUser.ID;
+                        UserHelper.AddOrUpdateUserSession("uid", new UserSession { Id = newUser.ID, dt = DateTime.UtcNow });
+                        //HttpContext.Current.Session["uid"] = newUser.ID;
 
                         return Json(new JsonResult<string>() { Code = 1, Message = "登录成功，欢迎" + newUser.NickName + "地访问" });
                     }
@@ -72,7 +95,7 @@ namespace SAEA.WebRedisManager.Controllers
                 }
                 else
                 {
-                    HttpContext.Current.Session["uid"] = user.ID;
+                    UserHelper.AddOrUpdateUserSession("uid", new UserSession { Id = user.ID, dt = DateTime.UtcNow });
 
                     return Json(new JsonResult<string>() { Code = 1, Message = "登录成功，欢迎" + user.NickName + "地访问" });
                 }
@@ -93,7 +116,8 @@ namespace SAEA.WebRedisManager.Controllers
         {
             try
             {
-                HttpContext.Current.Session.Remove("uid");
+                UserHelper.RemoveUserSession("uid");
+                //HttpContext.Current.Session.Remove("uid");
 
                 return Json(new JsonResult<string>() { Code = 1, Message = "注销成功" });
             }
@@ -163,16 +187,15 @@ namespace SAEA.WebRedisManager.Controllers
         {
             try
             {
-                if (HttpContext.Current.Session.Keys.Contains("uid"))
+                if (UserHelper.TryGetUserSession("uid", out UserSession u))
                 {
-                    var cuid = HttpContext.Current.Session["uid"].ToString();
 
-                    if (cuid == uid)
+                    if (u.Id == uid)
                     {
                         throw new Exception("禁止删除当前用户！");
                     }
 
-                    var user = UserHelper.Get(cuid);
+                    var user = UserHelper.Get(u.Id);
 
                     if (user != null)
                     {
@@ -220,7 +243,7 @@ namespace SAEA.WebRedisManager.Controllers
         /// <returns></returns>
         public ActionResult Authenticated()
         {
-            if (HttpContext.Current.Session.Keys.Contains("uid"))
+            if (UserHelper.TryGetUserSession("uid", out UserSession u))
             {
                 return Json(new JsonResult<bool>() { Code = 1, Data = true });
             }
