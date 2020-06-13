@@ -40,28 +40,6 @@ namespace SAEA.WebRedisManager.Controllers
         /// <returns></returns>
         public ActionResult Login(string userName, string password)
         {
-            int[] arr = new int[] { 1, 2, 3, 4, 5, 5, 6 };
-            Dictionary<int, int> d = new Dictionary<int, int>();
-            int count = 0;
-            int num = 0;
-            for (int i = 0; i < arr.Length; i++)
-            {
-                if (d.ContainsKey(arr[i]))
-                {
-                    d[arr[i]] = d[arr[i]] + 1;
-                }
-                else
-                {
-                    d.Add(arr[i], 1);
-                }
-
-                if (d[arr[i]] > count)
-                {
-                    count = d[arr[i]];
-                    num = arr[i];
-                }
-            }
-            Console.WriteLine(num);
             try
             {
                 if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password)) return Json(new JsonResult<string>() { Code = 2, Message = "用户名或密码不能为空" });
@@ -81,9 +59,10 @@ namespace SAEA.WebRedisManager.Controllers
                             Role = Role.Admin
                         };
 
+                        string token = Guid.NewGuid().ToString();
+                        HttpContext.Current.Response.Cookies.Add("token", new Http.HttpCookie("token", token, DateTime.Now.AddDays(30)));
                         UserHelper.Set(newUser);
-
-                        UserHelper.AddOrUpdateUserSession("uid", new UserSession { Id = newUser.ID, dt = DateTime.UtcNow });
+                        UserHelper.AddOrUpdateUserSession(token, new UserSession { Id = newUser.ID, dt = DateTime.UtcNow });
                         //HttpContext.Current.Session["uid"] = newUser.ID;
 
                         return Json(new JsonResult<string>() { Code = 1, Message = "登录成功，欢迎" + newUser.NickName + "地访问" });
@@ -95,7 +74,9 @@ namespace SAEA.WebRedisManager.Controllers
                 }
                 else
                 {
-                    UserHelper.AddOrUpdateUserSession("uid", new UserSession { Id = user.ID, dt = DateTime.UtcNow });
+                    string token = Guid.NewGuid().ToString();
+                    HttpContext.Current.Response.Cookies.Add("token", new Http.HttpCookie("token", token, DateTime.Now.AddDays(30)));
+                    UserHelper.AddOrUpdateUserSession(token, new UserSession { Id = user.ID, dt = DateTime.UtcNow });
 
                     return Json(new JsonResult<string>() { Code = 1, Message = "登录成功，欢迎" + user.NickName + "地访问" });
                 }
@@ -116,7 +97,8 @@ namespace SAEA.WebRedisManager.Controllers
         {
             try
             {
-                UserHelper.RemoveUserSession("uid");
+                var token = HttpContext.Current.Request.Cookies["token"].Value;
+                UserHelper.RemoveUserSession(token);
                 //HttpContext.Current.Session.Remove("uid");
 
                 return Json(new JsonResult<string>() { Code = 1, Message = "注销成功" });
@@ -187,7 +169,8 @@ namespace SAEA.WebRedisManager.Controllers
         {
             try
             {
-                if (UserHelper.TryGetUserSession("uid", out UserSession u))
+                var token = HttpContext.Current.Request.Cookies["token"].Value;
+                if (UserHelper.TryGetUserSession(token, out UserSession u))
                 {
 
                     if (u.Id == uid)
@@ -243,7 +226,11 @@ namespace SAEA.WebRedisManager.Controllers
         /// <returns></returns>
         public ActionResult Authenticated()
         {
-            if (UserHelper.TryGetUserSession("uid", out UserSession u))
+            if (!HttpContext.Current.Request.Cookies.TryGetValue("token", out Http.HttpCookie cookies))
+            {
+                return Json(new JsonResult<bool>() { Code = 1, Data = false });
+            }
+            if (UserHelper.TryGetUserSession(cookies.Value, out UserSession u))
             {
                 return Json(new JsonResult<bool>() { Code = 1, Data = true });
             }

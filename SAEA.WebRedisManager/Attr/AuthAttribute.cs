@@ -21,6 +21,7 @@ using SAEA.Redis.WebManager.Models;
 using SAEA.WebRedisManager.Libs;
 using SAEA.WebRedisManager.Models;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
@@ -49,8 +50,17 @@ namespace SAEA.WebRedisManager.Attr
         public override bool OnActionExecuting()
         {
             _stopwatch = Stopwatch.StartNew();
+            if (!HttpContext.Current.Request.Cookies.TryGetValue("token", out Http.HttpCookie cookies))
+            {
+                HttpContext.Current.Response.SetCached(new JsonResult(new JsonResult<string>() { Code = 3, Message = "当前操作需要登录！" }));
 
-            if (!UserHelper.TryGetUserSession("uid", out UserSession u))
+                HttpContext.Current.Response.End();
+
+                return false;
+            }
+
+            var token = cookies.Value;
+            if (!UserHelper.TryGetUserSession(token, out UserSession u))
             {
                 HttpContext.Current.Response.SetCached(new JsonResult(new JsonResult<string>() { Code = 3, Message = "当前操作需要登录！" }));
 
@@ -72,7 +82,7 @@ namespace SAEA.WebRedisManager.Attr
                 }
 
                 u.dt = DateTime.UtcNow;
-                UserHelper.AddOrUpdateUserSession("uid", u);
+                UserHelper.AddOrUpdateUserSession(token, u);
 
                 var user = UserHelper.Get(u.Id);
 
